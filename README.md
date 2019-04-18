@@ -1,6 +1,6 @@
 # 缓动系统文档说明
 ## 说明
-本缓动系统目的是替换egret中Tween系统。因为egret系统自带的tween运行依赖引擎自身tick，在切换到后台或浏览器失去焦点时引擎会暂停所有tick。这将导致所有正在运行的缓动动画被挂起。如果游戏流程高度依赖缓动动画，那么游戏逻辑将会出现无法预知的问题。为了彻底根除此问题，故而编写此缓动系统库。本库脱离egret系统运行，不会受限于egret的tick。即便失去焦点也不会被挂起。同时考虑到进行中的项目有可能已经大量使用egret的tween缓动系统，因此常用方法参照egret的tween方法命名，所以进行中的项目可以轻松使用，只需替换命名空间“egret.Tween”为"GZTweenHelper"即可。另外，本库编写了少量扩展方法，方便今后使用。
+本缓动系统目的是替换egret中Tween系统。因为egret系统自带的tween运行依赖引擎自身tick，在切换到后台或浏览器失去焦点时引擎会暂停所有tick。这将导致所有正在运行的缓动动画被挂起。如果游戏流程高度依赖缓动动画，那么游戏逻辑将会出现无法预知的问题。为了彻底根除此问题，故而编写此缓动系统库。本库脱离egret系统运行，不会受限于egret的tick。即便失去焦点也不会被挂起。同时考虑到进行中的项目有可能已经大量使用egret的tween缓动系统，因此常用方法参照egret的tween方法命名，所以进行中的项目可以轻松使用，只需替换命名空间“egret.Tween”为"GB_TweenHelper"即可。另外，本库编写了少量扩展方法，方便今后使用。
 
 ## 使用例
 下面是一个简单的使用例子，展现了缓动系统的运行方式，同时提供了play方法帮助控制开启时间，更加灵活。
@@ -27,9 +27,9 @@ a.play(false);
 target {any} 要激活 Tween 的对象  
 props {any} 参数，支持loop(循环播放) onChange(变化函数) onChangeObj(变化函数作用域)  
 
-返回值：GZTweenHelper
+返回值：GB_TweenHelper
 
-> GZTweenHelper.get(target,{loop:true});  
+> GB_TweenHelper.get(target,{loop:true});  
 
 #### removeTweens
 
@@ -37,18 +37,18 @@ props {any} 参数，支持loop(循环播放) onChange(变化函数) onChangeObj
 参数：  
 target {any} 需要删除的对象    
 
-返回值：GZTweenHelper
+返回值：GB_TweenHelper
 
-> GZTweenHelper.removeTweens(target); 
+> GB_TweenHelper.removeTweens(target); 
 
 #### removeAllTweens
 
 删除所有缓动动画  
 参数：无   
 
-返回值：GZTweenHelper
+返回值：GB_TweenHelper
 
-> GZTweenHelper.removeAllTweens(); 
+> GB_TweenHelper.removeAllTweens(); 
 
 #### setTweenType
 
@@ -68,7 +68,7 @@ sportType {twSportTypeStruct} 缓动方法类型
 props {any} 缓动参数，请参照egret的Tween  
 duration {number} 持续时间  
 
-返回值：GZTweenHelper
+返回值：GB_TweenHelper
 
 > tweenObj.to(props, 1000);
 
@@ -78,7 +78,7 @@ duration {number} 持续时间
 参数：   
 duration {number} 持续时间  
 
-返回值：GZTweenHelper
+返回值：GB_TweenHelper
 
 > tweenObj.wait(1000);
 
@@ -90,7 +90,7 @@ callback {Function} 回调方法，可返回数据，返回的数据是第三个
 thisObj {any} 执行回调对象  
 params {array} 回调方法参数  
 
-返回值：GZTweenHelper
+返回值：GB_TweenHelper
 
 > tweenObj.call((param)=>{}, this, ["name"]);
 
