@@ -1,8 +1,8 @@
-#缓动系统文档说明
-##说明
+# 缓动系统文档说明
+## 说明
 本缓动系统目的是替换egret中Tween系统。因为egret系统tween使用引擎自身tick，在切换到后台或浏览器失去焦点时tick将被暂停。这时所有缓动系统都将会被挂起，如果基于动画实现的游戏逻辑那么将会出现无法预知的问题。虽然重新启动游戏整个系统可以解决部分部分问题，但是无法从根本上解决所有问题。为了彻底根除此tween所带来的所有难题，因此编写此缓动系统库。本库脱离egret系统运行，因此不会受限于egret的tick。即便失去焦点依然可以正常运行。而且本库编写已考虑到当前项目应用需求，无需过多修改，只需替换命名空间“egret.Tween”为"GZTweenHelper"即可，同时编写了扩展方法，方便今后使用与扩展。
 
-##使用例
+## 使用例
 下面是一个简单的使用例子，展现了缓动系统的运行方式，同时提供了play方法帮助控制开启时间，更加灵活。
 
 ```
@@ -15,12 +15,12 @@ let a = GZTweenHelper.get(this["nickGroup"], { loop: true })
 a.play(false);
 ```
 
-##配置说明
-只需将缓动库文件夹放入项目src目录中即可，建议放入src/gameLib中
+## 配置说明
+只需将缓动库文件夹放入项目src目录中即可
 
-##api说明
+## api说明
 
-####get
+#### get
 
 生成缓动对象  
 参数：  
@@ -31,7 +31,7 @@ props {any} 参数，支持loop(循环播放) onChange(变化函数) onChangeObj
 
 > GZTweenHelper.get(target,{loop:true});  
 
-####removeTweens
+#### removeTweens
 
 删除对象身上的缓动动画  
 参数：  
@@ -41,7 +41,7 @@ target {any} 需要删除的对象
 
 > GZTweenHelper.removeTweens(target); 
 
-####removeAllTweens
+#### removeAllTweens
 
 删除所有缓动动画  
 参数：无   
@@ -50,7 +50,7 @@ target {any} 需要删除的对象
 
 > GZTweenHelper.removeAllTweens(); 
 
-####setTweenType
+#### setTweenType
 
 设置缓动方法  
 参数：  
@@ -61,7 +61,7 @@ sportType {twSportTypeStruct} 缓动方法类型
 
 > tweenObj.setTweenType(twChangeTypeStruct.easeInOut, twSportTypeStruct.Bounce); 
 
-####to
+#### to
 
 增加缓动动作  
 参数：  
@@ -72,7 +72,7 @@ duration {number} 持续时间
 
 > tweenObj.to(props, 1000);
 
-####wait
+#### wait
 
 增加延时等待  
 参数：   
@@ -82,7 +82,7 @@ duration {number} 持续时间
 
 > tweenObj.wait(1000);
 
-####call
+#### call
 
 增加回调  
 参数：   
@@ -94,7 +94,7 @@ params {array} 回调方法参数
 
 > tweenObj.call((param)=>{}, this, ["name"]);
 
-####play
+#### play
 
 执行缓动  
 参数：   
@@ -104,7 +104,7 @@ isReplay {boolean} 是否重制对象参数为初始值，默认是true
 
 > tweenObj.play(true);
 
-####stop
+#### stop
 
 停止缓动  
 参数：   
