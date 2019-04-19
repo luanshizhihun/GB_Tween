@@ -15,9 +15,9 @@ class GB_TweenHelper {
 	// 构造函数
 	public constructor(target: egret.DisplayObject, props) {
 		this._target = target;
-		props.loop ? this._props_loop = props.loop : false;
-		props.onChange ? this._props_onChange = props.onChange : null;
-		props.onChangeObj ? this._props_onChangeObj = props.onChangeObj : null;
+		this._props_loop = props && props.loop ? props.loop : false;
+		this._props_onChange = props && props.onChange ? props.onChange : null;
+		this._props_onChangeObj = props && props.onChangeObj ? props.onChangeObj : null;
 		this._actionGroup = new GB_TweenActionGroupLib(target, this._props_loop);
 		GB_TweenHelper._tweens.push(this);
 		// 模拟析构函数，当对象被删除的时候调用并删除对象内容
