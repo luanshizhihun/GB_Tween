@@ -21,15 +21,14 @@ class GB_TweenHelper {
 		this._actionGroup = new GB_TweenActionGroupLib(target, this._props_loop);
 		GB_TweenHelper._tweens.push(this);
 		// 模拟析构函数，当对象被删除的时候调用并删除对象内容
-		target.addEventListener(egret.Event.REMOVED_FROM_STAGE, () => {
-			this._reConstructor();
-		}, this)
+		target.addEventListener(egret.Event.REMOVED_FROM_STAGE, this._reConstructor, this)
 	}
 
 	// 析构函数
 	public _reConstructor() {
 		egret.log("执行析构函数，删除缓动对象");
 		GB_TweenHelper.removeTweens(this._target);
+		this._target.removeEventListener(egret.Event.REMOVED_FROM_STAGE, this._reConstructor, this);
 	}
 
 	/**
